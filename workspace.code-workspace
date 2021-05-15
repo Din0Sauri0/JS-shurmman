@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "introDOM"
+		},
+		{
+			"path": "intro-node"
+		},
+		{
+			"path": "TODO-App"
+		},
+		{
+			"path": "serverless"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "TODO-App"
+	}
+}
