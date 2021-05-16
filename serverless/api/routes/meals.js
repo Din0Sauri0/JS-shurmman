@@ -3,7 +3,7 @@ const express = require('express');
 const Meals = require('../models/Meals');
 
 const router = express.Router();
-
+ 
 router.get('/', (req, res) => {
     Meals.find().exec().then( x => res.status(200).send(x));
 });
