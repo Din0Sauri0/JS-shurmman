@@ -5,17 +5,19 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="main.css">
-	<title>Document</title>
+	<title>Almuerzi web</title>
 </head>
 <body>
 	<div id="meals">
 		<ul id="meals-list">
-			<li>completo</li>
-			<li>Hamburgesa</li>
+
+			<!--Traer meals de la API -->
+			<p>Cargando...</p>
+
 		</ul>
-		<form>
-			<input type="hidden" />
-			<input id="submit" type="submit" />
+		<form id="order">
+			<input id="meals-id" type="hidden" />
+			<input id="submit" disabled type="submit" />
 		</form>
 	</div>
 

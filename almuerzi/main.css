@@ -30,3 +30,15 @@ ul {
 	border-radius: 25px;
 	margin: 15px 0px 15px 38px;
 }
+
+#submit:disabled {
+	background-color: #ccc;
+}
+
+#meals-list li {
+	cursor: pointer;
+}
+
+.selected {
+	background-color: #eee;
+}
