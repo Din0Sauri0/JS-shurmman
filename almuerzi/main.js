@@ -1,3 +1,5 @@
+let mealsState = [];
+
 const stringToHTML = (s) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(s, 'text/html')
@@ -18,11 +20,19 @@ const renderItem = (item) => {
 
     return element;
 }
+const renderOrder = (order, meals) => {
+    const meal = meals.find(meal => meal._id === order.meal_id);
+    const element = stringToHTML(`<li data-id="${order._id}">${meal.name} - ${order.user_id}</li>`);
+    return element;
+}
+
 
 window.onload = () => {
     const orderForm = document.getElementById('order');
     orderForm.onsubmit = (e) => {
         e.preventDefault();
+        const submit = document.getElementById('submit');
+        submit.setAttribute('disabled', true); 1
         const mealId = document.getElementById('meals-id');
         const mealsIdValue = mealId.value;
         if (!mealsIdValue) {
@@ -41,11 +51,18 @@ window.onload = () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(order)
-        }).then(x => console.log(x));
+        }).then(x => x.json())
+            .then(res => {
+                const renderedOrder = renderOrder(res, mealsState);
+                const ordersList = document.getElementById('orders-list');
+                ordersList.appendChild(renderedOrder);
+                submit.removeAttribute('disabled');
+            });
     }
     fetch('http://localhost:3000/api/meals')
         .then(Response => Response.json())
         .then(data => {
+            mealsState = data;
             const mealsList = document.getElementById('meals-list');
             const submit = document.getElementById('submit');
             const listItems = data.map(renderItem);
@@ -56,6 +73,12 @@ window.onload = () => {
             fetch('http://localhost:3000/api/orders')
                 .then(response => response.json())
                 .then(ordersData => {
+                    const ordersList = document.getElementById('orders-list');
+                    const listOrders = ordersData.map(ordersData => renderOrder(ordersData, data));
+
+                    ordersList.removeChild(ordersList.firstElementChild);
+                    listOrders.forEach(element => ordersList.appendChild(element));
+
                     console.log(ordersData);
                 })
         });

@@ -7,6 +7,7 @@ const cors = require('cors');
 //archivos necesarios
 const meals = require('./routes/meals');
 const orders = require('./routes/orders');
+const auth = require('./routes/auth');
 
 //ejecucion express
 const app = express();
@@ -25,6 +26,7 @@ app.get('/test', (req, res) => {
 //Rutas
 app.use('/api/meals', meals);
 app.use('/api/orders', orders);
+app.use('/api/auth', auth);
 //
 module.exports = app;
 

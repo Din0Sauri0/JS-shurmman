@@ -1,0 +1,19 @@
+*{
+	margin:0;
+	padding: 0;
+}
+
+body {	
+	background-color: #40394a;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+}
+.content {
+	background-color: #ccffbd;
+	border-radius: 20px;
+	margin: 40% 0px;
+	padding: 20px;
+	
+	box-shadow: -2px -2px 1px #7eca9c;
+} 
